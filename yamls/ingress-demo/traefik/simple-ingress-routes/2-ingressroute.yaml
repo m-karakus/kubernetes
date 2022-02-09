@@ -8,7 +8,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`nginx.example.com`, `nginx.example.org`, `search.kizlarsoruyor.com`)
+    - match: Host(`nginx.example.com`, `nginx.example.org`)
       kind: Rule
       services:
         - name: nginx-deploy-main
