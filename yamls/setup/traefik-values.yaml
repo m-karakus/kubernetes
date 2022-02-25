@@ -145,13 +145,13 @@ providers:
 # - "--providers.file.filename=/config/dynamic.toml"
 # - "--ping"
 # - "--ping.entrypoint=web"
-volumes:
-  - name: pebble
-    mountPath: "/certs"
-    type: configMap
+volumes: []
+# - name: public-cert
+#   mountPath: "/certs"
 #   type: secret
 # - name: '{{ printf "%s-configs" .Release.Name }}'
 #   mountPath: "/config"
+#   type: configMap
 
 # Additional volumeMounts to add to the Traefik container
 additionalVolumeMounts: []
@@ -225,32 +225,14 @@ globalArguments:
 # Additional arguments to be passed at Traefik's binary
 # All available options available on https://docs.traefik.io/reference/static-configuration/cli/
 ## Use curly braces to pass values: `helm install --set="additionalArguments={--providers.kubernetesingress.ingressclass=traefik-internal,--log.level=DEBUG}"`
-# additionalArguments: []
+additionalArguments: []
 #  - "--providers.kubernetesingress.ingressclass=traefik-internal"
 #  - "--log.level=DEBUG"
 
-
-#  <---------------- I chanced here ---------------->
-additionalArguments:
-  - --certificatesresolvers.pebble.acme.tlschallenge=true
-  - --certificatesresolvers.pebble.acme.email=metin.karakus@test.com
-  - --certificatesresolvers.pebble.acme.storage=/data/acme.json
-  - --certificatesresolvers.pebble.acme.caserver=https://pebble/dir
-
-
-# Lets Encrypt servers
-
-# Staging
-# https://acme-staging-v02.api.letsencrypt.org/directory
-
-# Production Lets Encrypt
-# https://acme-v02.api.letsencrypt.org/directory
-#  <---------------- I chanced here ---------------->
-
 # Environment variables to be passed to Traefik's binary
-env:
-  - name: LEGO_CA_CERTIFICATES
-    value: "/certs/root-cert.pem"
+env: []
+# - name: SOME_VAR
+#   value: some-var-value
 # - name: SOME_VAR_FROM_CONFIG_MAP
 #   valueFrom:
 #     configMapRef:
