@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: systems-cert-tls
+  namespace: systems
+spec:
+  secretName: systems-cert-tls
+  issuerRef:
+    name: acme-issuer
+    kind: ClusterIssuer
+  dnsNames:
+  - 'ssltesting.bibilen.net'

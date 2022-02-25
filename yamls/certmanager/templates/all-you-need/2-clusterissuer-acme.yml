@@ -4,17 +4,17 @@ metadata:
   name: acme-issuer
   # (Optional) Metadata
   # ---
-  # namespace: your-namespace
+  namespace: cert-manager
 spec:
   acme:
     # Configure your email here...
     # ---
-    # email: your-email@address
+    email: system@girlsaskguys.com
 
     # Configure your server here...
     # ---
     # Letsencrypt Production
-    # server: https://acme-v02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
     # - or -
     # Letsencrypt Staging
     # server: https://acme-staging-v02.api.letsencrypt.org/directory
@@ -25,15 +25,15 @@ spec:
     # Configure DNS or HTTP Challenge here...
     # ---
     # DNS Challenge:
-    # - dns01:
+    - dns01:
         # Configure your DNS Provider here...
         # ---
-        # cloudflare:
-        #   email: your-email@address
+        cloudflare:
+          email: system@girlsaskguys.com
         # API Key:
-        #   apiKeySecretRef:
-        #     name: cloudflare-api-key-secret
-        #     key: api-key
+          apiKeySecretRef:
+            name: cloudflare-api-key-secret
+            key: api-key
         # - or -
         # API Token:
         #   apiTokenSecretRef:
