@@ -1,12 +1,12 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: systems-cert-tls
+  name: traefik-cert-staging
   namespace: systems
 spec:
-  secretName: systems-cert-tls
+  secretName: traefik-cert-staging
   issuerRef:
-    name: acme-issuer
+    name: letsencrypt-staging
     kind: ClusterIssuer
   dnsNames:
-  - 'ssltesting.bibilen.net'
+  - '*.bibilen.net'
